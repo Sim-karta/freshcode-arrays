@@ -5,11 +5,11 @@ const correctArr1 = arr1.filter((element) => {
     return element !== 0;
 });
 
+console.dir(correctArr1);
+
 const correctArr2 = arr2.map((element) => {
     return element / 100;
 });
-
-console.dir(correctArr1);
 
 console.dir(correctArr2);
 
@@ -22,3 +22,9 @@ const element100InCube = arr1.findIndex((element) => {
 });
 
 console.log(element100InCube !== -1 ? element100InCube : "Елемент не знайдено");
+
+const elementGreater50 = arr2.find((element) => {
+    return element > 50;
+});
+
+console.log(elementGreater50);
