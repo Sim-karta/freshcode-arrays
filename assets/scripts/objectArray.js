@@ -44,3 +44,11 @@ console.dir(notSubscribeUsers);
 users.forEach((user) => {
     console.log(user.getFullName());
 });
+
+const user2 = users.find((user) => {
+    return user.id === 2;
+});
+
+user2.email = "useremail2@ukr.net";
+
+console.dir(users);
