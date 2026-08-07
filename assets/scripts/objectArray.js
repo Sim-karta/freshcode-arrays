@@ -40,3 +40,7 @@ const notSubscribeUsers = users.filter((user) => {
 });
 
 console.dir(notSubscribeUsers);
+
+users.forEach((user) => {
+    console.log(user.getFullName());
+});
