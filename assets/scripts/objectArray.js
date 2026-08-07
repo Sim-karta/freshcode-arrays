@@ -31,4 +31,12 @@ for (let i = 0; i < 10; i++) {
     users.push(user);
 }
 
-console.dir(users[1].getFullName());
+console.dir(users);
+
+console.log(users[1].getFullName());
+
+const notSubscribeUsers = users.filter((user) => {
+    return user.isSubscribed === false;
+});
+
+console.dir(notSubscribeUsers);
