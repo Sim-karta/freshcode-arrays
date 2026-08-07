@@ -9,12 +9,10 @@ const correctArr2 = arr2.map((element) => {
     return element / 100;
 });
 
-const correctArr3 = arr2.map((element) => {
-    return element ** 3;
-});
-
 console.dir(correctArr1);
 
 console.dir(correctArr2);
 
-console.dir(correctArr3);
+arr2.forEach((element) => {
+    console.log(element ** 3);
+});
