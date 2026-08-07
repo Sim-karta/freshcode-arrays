@@ -1,30 +1,53 @@
+const traversalGroup = document.querySelector(".traversal");
+const filterNonzeroBtn = traversalGroup.querySelector(".filter-nonzero-btn");
+const mapDivideBtn = traversalGroup.querySelector(".map-divide-btn");
+const forEachCubeBtn = traversalGroup.querySelector(".forEach-cube-btn");
+const findSquare100Btn = traversalGroup.querySelector(".find-square-100-btn");
+const findGreater50Btn = traversalGroup.querySelector(".find-greater-50-btn");
+
 const arr1 = [-1, 5, 0, 9, -10];
 const arr2 = [99, 5, 0, 9, 30];
 
-const correctArr1 = arr1.filter((element) => {
-    return element !== 0;
+function filterNonZeroElements(arr) {
+    return arr.filter((element) => element !== 0);
+}
+
+function divideElementsBy100(arr) {
+    return arr.map((element) => element / 100);
+}
+
+function printCubeElements(arr) {
+    arr.forEach((element) => {
+        console.log(element ** 3);
+    });
+}
+
+function findSquare100Element(arr) {
+    return arr.findIndex((element) => element ** 2 === 100);
+}
+
+function findGreater50Element(arr) {
+    return arr.find((element) => element > 50);
+}
+
+filterNonzeroBtn.addEventListener("click", () => {
+    console.dir(filterNonZeroElements(arr1));
 });
-
-console.dir(correctArr1);
-
-const correctArr2 = arr2.map((element) => {
-    return element / 100;
+mapDivideBtn.addEventListener("click", () => {
+    console.dir(divideElementsBy100(arr2));
 });
-
-console.dir(correctArr2);
-
-arr2.forEach((element) => {
-    console.log(element ** 3);
+forEachCubeBtn.addEventListener("click", () => {
+    printCubeElements(arr2);
 });
+findSquare100Btn.addEventListener("click", () => {
+    const square100Element = findSquare100Element(arr1);
 
-const element100InCube = arr1.findIndex((element) => {
-    return element ** 2 === 100;
+    console.log(
+        square100Element !== -1 ? square100Element : "Елемент не знайдено",
+    );
 });
+findGreater50Btn.addEventListener("click", () => {
+    const greater50Element = findGreater50Element(arr2);
 
-console.log(element100InCube !== -1 ? element100InCube : "Елемент не знайдено");
-
-const elementGreater50 = arr2.find((element) => {
-    return element > 50;
+    console.log(greater50Element);
 });
-
-console.log(elementGreater50);
