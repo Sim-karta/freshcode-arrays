@@ -52,3 +52,13 @@ const user2 = users.find((user) => {
 user2.email = "useremail2@ukr.net";
 
 console.dir(users);
+
+const countSubscribeUsers = users.reduce((acc, user) => {
+    if (user.isSubscribed) {
+        acc += 1;
+    }
+    return acc;
+}, 0);
+
+const percentSubscribeUsers = (countSubscribeUsers / users.length) * 100;
+console.log(`Підписаних користувачів: ${percentSubscribeUsers}%`);
