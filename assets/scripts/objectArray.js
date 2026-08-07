@@ -62,3 +62,7 @@ const countSubscribeUsers = users.reduce((acc, user) => {
 
 const percentSubscribeUsers = (countSubscribeUsers / users.length) * 100;
 console.log(`Підписаних користувачів: ${percentSubscribeUsers}%`);
+
+users.sort((user1, user2) => user1.age - user2.age);
+
+console.dir(users);
