@@ -1,3 +1,21 @@
+const objectArrayGroup = document.querySelector(".object-array");
+const printUsersBtn = objectArrayGroup.querySelector(".print-users-btn");
+const printNotSubscribedBtn = objectArrayGroup.querySelector(
+    ".print-not-subscribed-btn",
+);
+const printFullNamesBtn = objectArrayGroup.querySelector(
+    ".print-full-names-btn",
+);
+const changeUserEmailBtn = objectArrayGroup.querySelector(
+    ".change-user-email-btn",
+);
+const printSubscribePercentBtn = objectArrayGroup.querySelector(
+    ".print-subscribe-percent-btn",
+);
+const sortUsersByAgeBtn = objectArrayGroup.querySelector(
+    ".sort-users-by-age-btn",
+);
+
 function User(id, name, surname, age, isMale, email, isSubscribed) {
     this.id = id;
     this.firstName = name;
@@ -31,38 +49,53 @@ for (let i = 0; i < 10; i++) {
     users.push(user);
 }
 
-console.dir(users);
+function printUsers() {
+    console.dir(users);
+}
 
-console.log(users[1].getFullName());
+function getNotSubscribedUsers() {
+    return users.filter((user) => !user.isSubscribed);
+}
 
-const notSubscribeUsers = users.filter((user) => {
-    return user.isSubscribed === false;
+function printFullNames() {
+    users.forEach((user) => {
+        console.log(user.getFullName());
+    });
+}
+
+function changeUserEmail(id) {
+    const user = users.find((user) => user.id === id);
+
+    user.email = `useremail${id}@ukr.net`;
+}
+
+function getSubscribePercent() {
+    const countSubscribeUsers = users.reduce((acc, user) => {
+        if (user.isSubscribed) {
+            acc += 1;
+        }
+        return acc;
+    }, 0);
+
+    return (countSubscribeUsers / users.length) * 100;
+}
+
+function sortUsersByAge() {
+    users.sort((user1, user2) => user1.age - user2.age);
+}
+
+printUsersBtn.addEventListener("click", printUsers);
+printNotSubscribedBtn.addEventListener("click", () => {
+    console.dir(getNotSubscribedUsers());
 });
-
-console.dir(notSubscribeUsers);
-
-users.forEach((user) => {
-    console.log(user.getFullName());
+printFullNamesBtn.addEventListener("click", printFullNames);
+changeUserEmailBtn.addEventListener("click", () => {
+    const userId = Number(
+        prompt("Введіть id користувача пошту якого ви хочете змінити"),
+    );
+    changeUserEmail(userId);
 });
-
-const user2 = users.find((user) => {
-    return user.id === 2;
+printSubscribePercentBtn.addEventListener("click", () => {
+    console.log(`Підписаних користувачів: ${getSubscribePercent()}%`);
 });
-
-user2.email = "useremail2@ukr.net";
-
-console.dir(users);
-
-const countSubscribeUsers = users.reduce((acc, user) => {
-    if (user.isSubscribed) {
-        acc += 1;
-    }
-    return acc;
-}, 0);
-
-const percentSubscribeUsers = (countSubscribeUsers / users.length) * 100;
-console.log(`Підписаних користувачів: ${percentSubscribeUsers}%`);
-
-users.sort((user1, user2) => user1.age - user2.age);
-
-console.dir(users);
+sortUsersByAgeBtn.addEventListener("click", sortUsersByAge);
