@@ -14,3 +14,15 @@ arr.unshift(num1);
 arr.push(num2);
 
 console.dir(arr);
+
+const arrayCopy1 = arr.slice();
+const arrayCopy2 = [...arr];
+const arrayCopy3 = Array.from(arr);
+
+const smallArrayCopy = arr.slice(0, 4);
+
+console.dir(arrayCopy1);
+console.dir(arrayCopy2);
+console.dir(arrayCopy3);
+
+console.dir(smallArrayCopy);
