@@ -1,3 +1,8 @@
 const arr = Array.from({ length: 7 }, () => Math.floor(Math.random() * 100));
 
-console.log(arr);
+console.dir(arr);
+
+arr.pop();
+arr.shift();
+
+console.dir(arr);
