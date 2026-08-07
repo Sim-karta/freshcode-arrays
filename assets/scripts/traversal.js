@@ -16,3 +16,9 @@ console.dir(correctArr2);
 arr2.forEach((element) => {
     console.log(element ** 3);
 });
+
+const element100InCube = arr1.findIndex((element) => {
+    return element ** 2 === 100;
+});
+
+console.log(element100InCube !== -1 ? element100InCube : "Елемент не знайдено");
